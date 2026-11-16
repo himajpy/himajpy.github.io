@@ -23,7 +23,14 @@ html{color-scheme:light;scroll-padding-top:5rem}
 :focus-visible{outline:2px solid #0E7A4F;outline-offset:3px}
 .wordmark{font-stretch:75%}
 /* Green/yellow stripe: the earth-wire colours used in electrical installations */
-.earth-stripe{background:repeating-linear-gradient(135deg,#0E7A4F 0 10px,#F2C500 10px 20px)}
+@keyframes pulse-flow {
+  0% { stroke-dashoffset: 400; }
+  100% { stroke-dashoffset: 0; }
+}
+.electron-bolt {
+  stroke-dasharray: 45 355;
+  animation: pulse-flow 2.2s linear infinite;
+}
 </style>
 <style type="text/tailwindcss">
 @layer components{
@@ -62,7 +69,37 @@ html{color-scheme:light;scroll-padding-top:5rem}
   <section class="mx-auto max-w-6xl px-6 pb-24 pt-16 sm:pt-24 lg:pb-32">
     <h1 class="inline-block">
       <span class="wordmark block text-[clamp(4.5rem,24vw,16rem)] font-extrabold leading-[0.82] tracking-tighter text-ink">AZIAN</span>
-      <span aria-hidden="true" class="earth-stripe mt-4 block h-3 sm:h-4"></span>
+      <h1 class="inline-block w-full max-w-[44rem]">
+  <span class="wordmark block text-[clamp(4.5rem,24vw,16rem)] font-extrabold leading-[0.82] tracking-tighter text-ink">AZIAN</span>
+
+  <!-- Animated Circuit Trace & Electron -->
+  <svg aria-hidden="true" class="mt-4 block h-7 w-full overflow-visible" viewBox="0 0 400 28" fill="none">
+    <defs>
+      <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+        <feGaussianBlur stdDeviation="2.5" result="blur" />
+        <feMerge>
+          <feMergeNode in="blur" />
+          <feMergeNode in="SourceGraphic" />
+        </feMerge>
+      </filter>
+    </defs>
+
+    <!-- Base copper/PCB trace -->
+    <path d="M 4 14 H 140 L 152 6 H 248 L 260 14 H 396" stroke="#0E3B2C" stroke-opacity="0.2" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" />
+
+    <!-- Terminal PCB pads -->
+    <circle cx="4" cy="14" r="3.5" fill="#0E7A4F" />
+    <circle cx="396" cy="14" r="3.5" fill="#0E7A4F" />
+
+    <!-- Travelling electricity surge -->
+    <path class="electron-bolt" d="M 4 14 H 140 L 152 6 H 248 L 260 14 H 396" stroke="#0E7A4F" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" filter="url(#glow)" />
+
+    <!-- Glowing electron particle -->
+    <circle r="4.5" fill="#F2C500" stroke="#0E7A4F" stroke-width="1.5" filter="url(#glow)">
+      <animateMotion dur="2.2s" repeatCount="indefinite" path="M 4 14 H 140 L 152 6 H 248 L 260 14 H 396" />
+    </circle>
+  </svg>
+</h1>
     </h1>
     <div class="mt-12 grid gap-10 lg:grid-cols-[1.1fr_1fr] lg:gap-16">
       <h2 class="text-3xl font-bold leading-tight tracking-tight text-ink sm:text-4xl">Electrical engineer and information technology bachelor graduate.</h2>
