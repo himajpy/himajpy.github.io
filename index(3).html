@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en" class="motion-safe:scroll-smooth">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light">
+<meta name="theme-color" content="#ffffff">
+<meta name="description" content="AZIAN is an electrical engineer and information technology bachelor graduate. Browse selected projects, skills and contact details.">
+<title>AZIAN | Electrical Engineer and IT Graduate</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='18' fill='%230E7A4F'/%3E%3Cpath d='M30 76 50 24l20 52M37 60h26' stroke='%23F2C500' stroke-width='9' fill='none' stroke-linejoin='round'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,200..800&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com/3.4.17"></script>
+<script>
+tailwind.config={theme:{extend:{
+  fontFamily:{sans:['"Bricolage Grotesque"','ui-sans-serif','system-ui','sans-serif']},
+  colors:{ink:'#0E3B2C',mute:'#4A5A53',board:'#F2F5F3',signal:'#F2C500',earth:{DEFAULT:'#0E7A4F',dark:'#0A5C3B'}}
+}}}
+</script>
+<style>
+html{color-scheme:light;scroll-padding-top:5rem}
+:focus-visible{outline:2px solid #0E7A4F;outline-offset:3px}
+.wordmark{font-stretch:75%}
+/* Green/yellow stripe: the earth-wire colours used in electrical installations */
+.earth-stripe{background:repeating-linear-gradient(135deg,#0E7A4F 0 10px,#F2C500 10px 20px)}
+</style>
+<style type="text/tailwindcss">
+@layer components{
+  .btn-primary{@apply inline-flex items-center justify-center rounded-md bg-earth px-5 py-2.5 text-sm font-semibold text-white hover:bg-earth-dark}
+  .btn-outline{@apply inline-flex items-center justify-center rounded-md border border-ink/30 bg-white px-5 py-2.5 text-sm font-semibold text-ink hover:border-ink hover:bg-board}
+  .tag{@apply rounded bg-board px-2.5 py-1 text-xs font-medium text-ink}
+  .link{@apply text-lg font-medium text-ink underline decoration-signal decoration-[3px] underline-offset-4 hover:bg-signal/30}
+}
+</style>
+</head>
+
+<body class="bg-white font-sans text-mute antialiased">
+
+<header class="sticky top-0 z-50 border-b border-ink/10 bg-white/90 backdrop-blur">
+  <nav class="mx-auto flex h-16 max-w-6xl items-center justify-between px-6" aria-label="Main">
+    <a href="#top" class="text-xl font-extrabold tracking-tight text-ink">AZIAN</a>
+    <ul class="hidden items-center gap-8 text-sm font-semibold text-ink md:flex">
+      <li><a href="#projects" class="hover:text-earth">Projects</a></li>
+      <li><a href="#skills" class="hover:text-earth">Skills</a></li>
+      <li><a href="#contact" class="hover:text-earth">Contact</a></li>
+    </ul>
+    <button id="menu-btn" type="button" class="-mr-2 p-2 text-ink md:hidden" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu">
+      <svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+    </button>
+  </nav>
+  <ul id="mobile-menu" class="hidden border-t border-ink/10 px-6 py-2 text-base font-semibold text-ink md:hidden">
+    <li><a href="#projects" class="block py-3">Projects</a></li>
+    <li><a href="#skills" class="block py-3">Skills</a></li>
+    <li><a href="#contact" class="block py-3">Contact</a></li>
+  </ul>
+</header>
+
+<main id="top">
+
+  <!-- Hero -->
+  <section class="mx-auto max-w-6xl px-6 pb-24 pt-16 sm:pt-24 lg:pb-32">
+    <h1 class="inline-block">
+      <span class="wordmark block text-[clamp(4.5rem,24vw,16rem)] font-extrabold leading-[0.82] tracking-tighter text-ink">AZIAN</span>
+      <span aria-hidden="true" class="earth-stripe mt-4 block h-3 sm:h-4"></span>
+    </h1>
+    <div class="mt-12 grid gap-10 lg:grid-cols-[1.1fr_1fr] lg:gap-16">
+      <h2 class="text-3xl font-bold leading-tight tracking-tight text-ink sm:text-4xl">Electrical engineer and information technology bachelor graduate.</h2>
+      <div>
+        <p class="max-w-prose text-lg leading-relaxed">I work across hardware and software, from embedded sensors to the web dashboards that make their data useful. I’m looking for an engineering role where I can turn messy real-world problems into dependable systems.</p>
+        <div class="mt-8 flex flex-wrap gap-3">
+          <a href="#projects" class="btn-primary">View Projects</a>
+          <a href="#contact" class="btn-outline">Contact Me</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Projects -->
+  <section id="projects" class="mx-auto max-w-6xl px-6 pb-24 lg:pb-32">
+    <h2 class="text-3xl font-bold tracking-tight text-ink sm:text-4xl">Projects</h2>
+    <p class="mt-3 max-w-xl text-lg">Things I’ve designed and built, from embedded sensors to full-stack web apps.</p>
+    <div id="project-grid" class="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-3"></div>
+  </section>
+
+  <!-- Skills -->
+  <section id="skills" class="bg-board">
+    <div class="mx-auto max-w-6xl px-6 py-24 lg:py-28">
+      <h2 class="text-3xl font-bold tracking-tight text-ink sm:text-4xl">Skills and tech stack</h2>
+      <dl id="skills-list" class="mt-12 border-b border-ink/15"></dl>
+    </div>
+  </section>
+
+</main>
+
+<!-- Contact / Footer -->
+<footer id="contact">
+  <div class="mx-auto max-w-6xl px-6 py-24 lg:py-28">
+    <div class="flex flex-col gap-8 md:flex-row md:items-end md:justify-between">
+      <div>
+        <h2 class="max-w-xl text-4xl font-bold leading-tight tracking-tight text-ink sm:text-5xl">Open to new roles. Let’s talk.</h2>
+        <p class="mt-4 max-w-md text-lg">Email is the quickest way to reach me.</p>
+      </div>
+      <div><a href="resume.pdf" download="AZIAN-Resume.pdf" class="btn-primary">Download Resume (PDF)</a></div>
+    </div>
+    <dl class="mt-14 border-b border-ink/15">
+      <div class="grid gap-1 border-t border-ink/15 py-5 sm:grid-cols-[14rem_1fr]">
+        <dt class="font-semibold text-ink">Email</dt>
+        <dd><a class="link" href="mailto:your.email@example.com">your.email@example.com</a></dd>
+      </div>
+      <div class="grid gap-1 border-t border-ink/15 py-5 sm:grid-cols-[14rem_1fr]">
+        <dt class="font-semibold text-ink">GitHub</dt>
+        <dd><a class="link" href="https://github.com/your-username" target="_blank" rel="noopener noreferrer">github.com/your-username</a></dd>
+      </div>
+      <div class="grid gap-1 border-t border-ink/15 py-5 sm:grid-cols-[14rem_1fr]">
+        <dt class="font-semibold text-ink">LinkedIn</dt>
+        <dd><a class="link" href="https://www.linkedin.com/in/your-profile" target="_blank" rel="noopener noreferrer">linkedin.com/in/your-profile</a></dd>
+      </div>
+    </dl>
+    <p class="mt-10 text-sm">© <span id="year"></span> AZIAN</p>
+  </div>
+</footer>
+
+<script>
+/* EDIT: replace these placeholder projects with your own. Add or remove entries freely. */
+const projects=[
+  {type:"IoT and embedded",title:"Smart Energy Monitor",desc:"ESP32 sensor nodes send power-usage readings over MQTT to a web dashboard that charts consumption in real time.",tags:["C++","Python","MQTT","React"],demo:"https://example.com",repo:"https://github.com/your-username/smart-energy-monitor"},
+  {type:"Full-stack web",title:"Inventory Tracker",desc:"Web app for managing stock, orders and suppliers, with role-based login and CSV export.",tags:["Python","Flask","React","SQL"],demo:"https://example.com",repo:"https://github.com/your-username/inventory-tracker"},
+  {type:"Networking",title:"Network Traffic Analyzer",desc:"Command-line tool that captures packets on a local network and flags unusual traffic patterns.",tags:["Python","Linux","Docker","SQL"],demo:"https://example.com",repo:"https://github.com/your-username/traffic-analyzer"}
+];
+
+/* EDIT: your skills, grouped by category. */
+const skills={
+  "Languages":["Python","JavaScript","SQL","C/C++","HTML/CSS"],
+  "Frameworks":["React","Node.js","Flask","Tailwind CSS"],
+  "Tools":["Git/GitHub","Linux","Docker","PostgreSQL","VS Code"],
+  "Electrical and embedded":["MATLAB","Arduino/ESP32","KiCad","Circuit analysis"]
+};
+
+document.getElementById("project-grid").innerHTML=projects.map(p=>`
+  <article class="flex flex-col rounded-lg border border-ink/20 bg-white p-6 sm:p-7">
+    <p class="text-sm font-medium text-earth">${p.type}</p>
+    <h3 class="mt-2 text-2xl font-bold tracking-tight text-ink">${p.title}</h3>
+    <p class="mt-3 flex-1 leading-relaxed">${p.desc}</p>
+    <ul class="mt-6 flex flex-wrap gap-2">${p.tags.map(t=>`<li class="tag">${t}</li>`).join("")}</ul>
+    <div class="mt-7 flex gap-3 border-t border-ink/10 pt-6">
+      <a href="${p.demo}" target="_blank" rel="noopener noreferrer" class="btn-primary flex-1">Live Demo</a>
+      <a href="${p.repo}" target="_blank" rel="noopener noreferrer" class="btn-outline flex-1">GitHub Repo</a>
+    </div>
+  </article>`).join("");
+
+document.getElementById("skills-list").innerHTML=Object.entries(skills).map(([name,items])=>`
+  <div class="grid gap-2 border-t border-ink/15 py-6 sm:grid-cols-[14rem_1fr]">
+    <dt class="font-semibold text-ink">${name}</dt>
+    <dd class="flex flex-wrap gap-x-6 gap-y-1 text-lg">${items.map(s=>`<span>${s}</span>`).join("")}</dd>
+  </div>`).join("");
+
+const menuBtn=document.getElementById("menu-btn"),menu=document.getElementById("mobile-menu");
+menuBtn.addEventListener("click",()=>{
+  const open=!menu.classList.toggle("hidden");
+  menuBtn.setAttribute("aria-expanded",String(open));
+});
+menu.addEventListener("click",e=>{
+  if(e.target.closest("a")){menu.classList.add("hidden");menuBtn.setAttribute("aria-expanded","false");}
+});
+document.getElementById("year").textContent=new Date().getFullYear();
+</script>
+</body>
+</html>
