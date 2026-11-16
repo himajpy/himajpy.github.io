@@ -1,1 +1,1 @@
-# himajpy.githup.io
+# himajpy.github.io
