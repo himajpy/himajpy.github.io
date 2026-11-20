@@ -23,60 +23,69 @@ html{color-scheme:light;scroll-padding-top:5rem}
 :focus-visible{outline:2px solid #0E7A4F;outline-offset:3px}
 .wordmark{font-stretch:75%}
 
-@keyframes trace-flood {
-  0% { stroke-dashoffset: 100; }
-  100% { stroke-dashoffset: -100; }
-}
 
-/* AZIAN — Electron Identity */
+/* AZIAN — Circuit Typography */
 
-.wordmark {
-    font-stretch: 75%;
-    position: relative;
-    letter-spacing: -0.075em;
-    text-shadow: 0 3px 14px rgba(255,255,255,0.85);
-}
-
-.electron-orbit {
+.azian-trace {
     fill: none;
     stroke: #0E7A4F;
-    stroke-width: 1.5;
-    stroke-opacity: 0.19;
-}
-
-.electron-circuit {
-    fill: none;
-    stroke: #0E7A4F;
-    stroke-width: 1.5;
-    stroke-opacity: 0.24;
+    stroke-width: 11;
     stroke-linecap: round;
     stroke-linejoin: round;
+    stroke-dasharray: 1;
+    stroke-dashoffset: 1;
+    animation: draw-letter 1.1s ease-out forwards;
 }
 
-.electron-dot {
-    filter: url(#electron-glow);
+.azian-trace:nth-child(2) { animation-delay: .15s; }
+.azian-trace:nth-child(3) { animation-delay: .30s; }
+.azian-trace:nth-child(4) { animation-delay: .45s; }
+.azian-trace:nth-child(5) { animation-delay: .60s; }
+.azian-trace:nth-child(6) { animation-delay: .75s; }
+.azian-trace:nth-child(7) { animation-delay: .90s; }
+.azian-trace:nth-child(8) { animation-delay: 1.05s; }
+.azian-trace:nth-child(9) { animation-delay: 1.20s; }
+.azian-trace:nth-child(10) { animation-delay: 1.35s; }
+
+@keyframes draw-letter {
+    to { stroke-dashoffset: 0; }
 }
 
-.electron-core {
+.azian-electron {
     fill: #F2C500;
-    stroke: #0E7A4F;
-    stroke-width: 1.5;
+    stroke: white;
+    stroke-width: 2;
+    filter: url(#azian-glow);
 }
 
-.electron-small {
-    fill: #0E7A4F;
+.azian-pulse {
+    fill: none;
+    stroke: #F2C500;
+    stroke-width: 3;
+    stroke-linecap: round;
+    stroke-dasharray: 12 25;
+    animation: current-flow 1.2s linear infinite;
 }
 
-.electron-halo {
-    fill: #F2C500;
-    opacity: 0.15;
+@keyframes current-flow {
+    to { stroke-dashoffset: -37; }
 }
 
 @media (prefers-reduced-motion: reduce) {
-    .electron-dot {
+    .azian-trace {
+        animation: none;
+        stroke-dashoffset: 0;
+    }
+
+    .azian-pulse {
+        animation: none;
+    }
+
+    .azian-electron {
         display: none;
     }
 }
+
 
 </style>
 <style type="text/tailwindcss">
@@ -118,162 +127,149 @@ html{color-scheme:light;scroll-padding-top:5rem}
     <!-- Header + Flooding Circuit Traces Wrapper -->
 
 <!-- AZIAN Electron Identity -->
-<div class="relative py-10 sm:py-16">
 
-    <svg
-        aria-hidden="true"
-        class="pointer-events-none absolute inset-0 z-0 h-full w-full overflow-visible"
-        viewBox="0 0 1000 280"
-        preserveAspectRatio="xMidYMid meet"
-        fill="none">
+<div class="relative mx-auto w-full py-12 sm:py-16">
 
-        <defs>
-            <filter id="electron-glow"
-                x="-200%" y="-200%"
-                width="500%" height="500%">
+<svg viewBox="0 0 1100 300"
+     class="w-full overflow-visible"
+     role="img"
+     aria-label="AZIAN formed from animated electronic circuit traces">
 
-                <feGaussianBlur
-                    stdDeviation="4"
-                    result="blur"/>
+<defs>
+    <filter id="azian-glow" x="-200%" y="-200%"
+            width="500%" height="500%">
+        <feGaussianBlur stdDeviation="5" result="blur"/>
+        <feMerge>
+            <feMergeNode in="blur"/>
+            <feMergeNode in="SourceGraphic"/>
+        </feMerge>
+    </filter>
 
-                <feMerge>
-                    <feMergeNode in="blur"/>
-                    <feMergeNode in="SourceGraphic"/>
-                </feMerge>
-            </filter>
+    <!-- Letter paths -->
 
-            <!-- Main orbital path -->
-            <path id="orbit-main"
-                d="M 70 140
-                   C 190 -5, 810 -5, 930 140
-                   C 810 285, 190 285, 70 140"/>
+    <path id="letter-a1"
+          d="M55 240 L130 45 L205 240"/>
 
-            <!-- Secondary orbital path -->
-            <path id="orbit-secondary"
-                d="M 130 140
-                   C 270 30, 730 30, 870 140
-                   C 730 250, 270 250, 130 140"/>
+    <path id="letter-a2"
+          d="M85 165 H175"/>
 
-            <!-- Electronic connection paths -->
-            <path id="circuit-left"
-                d="M 0 105 H 105 L 135 130 H 205"/>
+    <path id="letter-z"
+          d="M255 45 H425 L255 240 H425"/>
 
-            <path id="circuit-right"
-                d="M 1000 175 H 895 L 865 150 H 795"/>
+    <path id="letter-i"
+          d="M505 45 V240"/>
 
-        </defs>
+    <path id="letter-a3"
+          d="M575 240 L650 45 L725 240"/>
 
-        <!-- Static orbital structure -->
-        <g class="electron-orbit">
-            <use href="#orbit-main"/>
-            <use href="#orbit-secondary"/>
-        </g>
+    <path id="letter-a4"
+          d="M605 165 H695"/>
 
-        <!-- Circuit connections -->
-        <g class="electron-circuit">
-            <use href="#circuit-left"/>
-            <use href="#circuit-right"/>
-        </g>
+    <path id="letter-n1"
+          d="M785 240 V45 L960 240 V45"/>
 
-        <!-- Connection terminals -->
-        <g fill="#FFFFFF"
-           stroke="#0E7A4F"
-           stroke-width="2">
+</defs>
 
-            <circle cx="105" cy="105" r="4"/>
-            <circle cx="205" cy="130" r="4"/>
-            <circle cx="895" cy="175" r="4"/>
-            <circle cx="795" cy="150" r="4"/>
+<!-- Background circuit -->
+<g fill="none" stroke="#0E7A4F"
+   stroke-opacity=".12" stroke-width="11"
+   stroke-linecap="round" stroke-linejoin="round">
 
-        </g>
+    <path d="M15 270 H55"/>
+    <path d="M425 240 H465"/>
+    <path d="M505 45 H545"/>
+    <path d="M725 240 H755"/>
+    <path d="M960 45 H1050"/>
 
-        <!-- Moving electron particles -->
-        <g class="electron-dot">
+    <use href="#letter-a1"/>
+    <use href="#letter-a2"/>
+    <use href="#letter-z"/>
+    <use href="#letter-i"/>
+    <use href="#letter-a3"/>
+    <use href="#letter-a4"/>
+    <use href="#letter-n1"/>
+</g>
 
-            <!-- Main yellow electron -->
-            <circle r="5" class="electron-core">
-                <animateMotion
-                    dur="7s"
-                    repeatCount="indefinite"
-                    rotate="auto">
+<!-- Animated letter strokes -->
+<g fill="none" stroke="#0E7A4F"
+   stroke-width="11"
+   stroke-linecap="round"
+   stroke-linejoin="round">
 
-                    <mpath href="#orbit-main"/>
-                </animateMotion>
-            </circle>
+    <use href="#letter-a1" class="azian-trace"
+         pathLength="1"/>
 
-            <!-- Second electron -->
-            <circle r="4" class="electron-core">
-                <animateMotion
-                    dur="7s"
-                    begin="-3.5s"
-                    repeatCount="indefinite">
+    <use href="#letter-a2" class="azian-trace"
+         pathLength="1"/>
 
-                    <mpath href="#orbit-main"/>
-                </animateMotion>
-            </circle>
+    <use href="#letter-z" class="azian-trace"
+         pathLength="1"/>
 
-            <!-- Secondary green electron -->
-            <circle r="3.5" class="electron-small">
-                <animateMotion
-                    dur="5s"
-                    repeatCount="indefinite">
+    <use href="#letter-i" class="azian-trace"
+         pathLength="1"/>
 
-                    <mpath href="#orbit-secondary"/>
-                </animateMotion>
-            </circle>
+    <use href="#letter-a3" class="azian-trace"
+         pathLength="1"/>
 
-            <!-- Secondary yellow electron -->
-            <circle r="3.5" class="electron-core">
-                <animateMotion
-                    dur="5s"
-                    begin="-2.5s"
-                    repeatCount="indefinite">
+    <use href="#letter-a4" class="azian-trace"
+         pathLength="1"/>
 
-                    <mpath href="#orbit-secondary"/>
-                </animateMotion>
-            </circle>
+    <use href="#letter-n1" class="azian-trace"
+         pathLength="1"/>
 
-            <!-- Circuit electron -->
-            <circle r="3.5" class="electron-core">
-                <animateMotion
-                    dur="3s"
-                    repeatCount="indefinite">
+</g>
 
-                    <mpath href="#circuit-left"/>
-                </animateMotion>
-            </circle>
+<!-- Flowing electrons -->
+<g class="azian-electron">
 
-        </g>
+    <circle r="6">
+        <animateMotion dur="1.1s"
+            begin="0s" repeatCount="indefinite">
+            <mpath href="#letter-a1"/>
+        </animateMotion>
+    </circle>
 
-    </svg>
+    <circle r="6">
+        <animateMotion dur="1.3s"
+            begin=".7s" repeatCount="indefinite">
+            <mpath href="#letter-z"/>
+        </animateMotion>
+    </circle>
 
-    <!-- Main AZIAN Wordmark -->
-    <h1 class="relative z-10 text-center">
+    <circle r="6">
+        <animateMotion dur="1.1s"
+            begin="1.4s" repeatCount="indefinite">
+            <mpath href="#letter-a3"/>
+        </animateMotion>
+    </circle>
 
-        <span class="wordmark inline-block
-            text-[clamp(4rem,19vw,13rem)]
-            font-extrabold
-            leading-none
-            tracking-tighter
-            text-ink">
+    <circle r="6">
+        <animateMotion dur="1.5s"
+            begin="2s" repeatCount="indefinite">
+            <mpath href="#letter-n1"/>
+        </animateMotion>
+    </circle>
 
-            AZIAN
+</g>
 
-        </span>
+<!-- Circuit terminals -->
+<g fill="#F2C500">
+    <circle cx="55" cy="240" r="5"/>
+    <circle cx="425" cy="240" r="5"/>
+    <circle cx="505" cy="45" r="5"/>
+    <circle cx="960" cy="45" r="5"/>
+</g>
 
-    </h1>
+</svg>
 
-    <!-- Engineering identity -->
-    <p class="relative z-10 mt-5 text-center
-        text-xs sm:text-sm
-        font-semibold tracking-[0.35em]
-        uppercase text-earth">
-
-        ENGINEERING · ELECTRONICS · TECHNOLOGY
-
-    </p>
+<p class="mt-5 text-center text-sm
+          font-semibold tracking-[0.35em]
+          text-earth">
+    ELECTRICAL ENGINEERING · TECHNOLOGY
+</p>
 
 </div>
+
 
 
     <div class="mt-8 grid gap-10 lg:grid-cols-[1.1fr_1fr] lg:gap-16">
